@@ -20,9 +20,26 @@
                     }
                 }
             };
-            xhr.onerror = function () {
-                document.getElementById('result').value = 'Network Error or CORS Error';
-            };
+           // xhr.onerror = function () {
+          //      document.getElementById('result').value = 'Network Error or CORS Error';
+           // };
+
+ xhr.onerror = function (event) {
+        // 捕获更详细的错误信息
+        const resultElement = document.getElementById('result');
+        const errorMessage = `Network Error: ${event.type}\n`;
+
+        // 获取更多信息
+        if (xhr) {
+            resultElement.value = errorMessage +
+                `Status: ${xhr.status}\n` +
+                `Status Text: ${xhr.statusText}\n` +
+                `Response: ${xhr.responseText}`;
+        } else {
+            resultElement.value = errorMessage + 'No xhr object available.';
+        }
+    };
+
             xhr.send();
         }
 
