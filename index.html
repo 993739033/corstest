@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <meta charset="UTF-8">
+     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CORS Test</title>
     <script>
@@ -50,7 +49,7 @@
                     if (response.ok) {
                         return response.json(); // 返回 JSON 响应
                     } else {
-                        throw new Error('CORS Error: ' + response.status);
+                        throw new Error('CORS Error: ' + response.status+' '+response.statusText);
                     }
                 })
                 .then(data => {
